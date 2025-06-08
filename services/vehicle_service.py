@@ -9,7 +9,7 @@ class VehicleService:
     # Use-cases
     def create_vehicle(self, plate: str, **attrs) -> None:
         if self.repo.get_by_plate(plate):
-            raise ValueError("Vehicle already exists")
+            raise ValueError("Ce véhicule existe déjà")
         vehicle = Vehicle(plate_number=plate, **attrs)
         self.repo.add(vehicle)
 
@@ -21,3 +21,18 @@ class VehicleService:
 
     def remove_vehicle(self, plate: str):
         self.repo.delete(plate)
+
+    def list_vehicle_types(self) -> list[str]:
+        return sorted({v.vehicle_type for v in self.list_vehicles() if v.vehicle_type})
+
+    def list_destinations(self) -> list[str]:
+        return sorted(
+            {
+                v.default_destination
+                for v in self.list_vehicles()
+                if v.default_destination
+            }
+        )
+
+    def get_by_plate(self, plate: str):
+        return self.repo.get_by_plate(plate)  # type: ignore[attr-defined]
