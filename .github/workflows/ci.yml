@@ -45,3 +45,53 @@ jobs:
         with:
           name: coverage-xml
           path: coverage.xml
+
+  windows-installer:
+    needs: tests
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Derive version
+        id: ver
+        run: echo "VERSION=${{ github.run_number }}" >> $GITHUB_ENV
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: Install deps
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt pyinstaller==6.4.0
+
+      # --- PyInstaller bundle ------------------------------------
+      - name: PyInstaller one-file EXE
+        run: |
+          pyi-makespec --name FleetManager --onefile --windowed main.py
+          # add Qt & ReportLab data
+          echo "from PyInstaller.utils.hooks import collect_data_files" >> FleetManager.spec
+          echo "datas = collect_data_files('PyQt5') + collect_data_files('reportlab')" >> FleetManager.spec
+          pyinstaller FleetManager.spec
+
+      # --- Install Inno Setup & build installer ------------------
+      - name: Install Inno Setup
+        run: choco install innosetup --yes
+
+      - name: Build .exe installer
+        env:
+          MyVersion: ${{ env.VERSION }}
+        run: |
+          "C:\Program Files (x86)\Inno Setup 6\ISCC.exe" ^
+            build\windows\installer.iss
+
+      # --- Upload final artifact ---------------------------------
+      - name: Upload installer
+        uses: actions/upload-artifact@v4
+        with:
+          name: FleetManager-Setup
+          path: Output\FleetManager-Setup.exe
+
