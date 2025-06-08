@@ -91,5 +91,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: FleetManager-Setup
-          path: Output\FleetManager-Setup.exe
+          path: deploy/windows/Output/FleetManager-Setup.exe
 
