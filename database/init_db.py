@@ -1,5 +1,4 @@
 import database.models  # noqa: F401  ensure model classes are registered
-
 from database.schema import Base, engine
 
 
