@@ -1,9 +1,19 @@
 from datetime import date
 
 from PyQt5.QtCore import QDate, QTime, pyqtSignal
-from PyQt5.QtWidgets import (QComboBox, QDateEdit, QHBoxLayout, QLineEdit,
-                             QMessageBox, QPushButton, QTableWidget,
-                             QTableWidgetItem, QTimeEdit, QVBoxLayout, QWidget)
+from PyQt5.QtWidgets import (
+    QComboBox,
+    QDateEdit,
+    QHBoxLayout,
+    QLineEdit,
+    QMessageBox,
+    QPushButton,
+    QTableWidget,
+    QTableWidgetItem,
+    QTimeEdit,
+    QVBoxLayout,
+    QWidget,
+)
 
 from services.triplog_service import TripLogService
 from services.vehicle_service import VehicleService
