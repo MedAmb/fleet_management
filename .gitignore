@@ -1,0 +1,33 @@
+# ─── Python byte-code & cache ───────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+
+# ─── Virtual environments ──────────────────────────────────────────────────────
+.venv/
+env/
+venv/
+
+# ─── Local data files ──────────────────────────────────────────────────────────
+fleet.db
+*.db
+*.sqlite
+instance/
+*.log
+
+# ─── Test / coverage artefacts ─────────────────────────────────────────────────
+.coverage
+htmlcov/
+.pytest_cache/
+
+# ─── Build / packaging ─────────────────────────────────────────────────────────
+build/
+dist/
+*.egg-info/
+*.whl
+
+# ─── IDE & OS cruft ────────────────────────────────────────────────────────────
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

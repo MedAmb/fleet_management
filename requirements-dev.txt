@@ -1,0 +1,10 @@
+# Test runner & helpers
+pytest==8.2.1
+pytest-mock==3.14.0
+coverage==7.5.3
+
+# Static analysis & formatting
+flake8==7.0.0
+black==24.3.0
+isort==5.13.2
+mypy==1.10.0

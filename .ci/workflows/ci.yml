@@ -1,0 +1,57 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, dev, feature/** ]
+  pull_request:
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.11", "3.12"]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: "pip"
+
+      # ---------- Install runtime deps ----------
+      - name: Install runtime dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      # ---------- Install dev/test deps ----------
+      - name: Install dev & QA dependencies
+        run: |
+          pip install -r requirements-dev.txt
+
+      # ---------- Static checks ----------
+      - name: Black (format check)
+        run: black --check fleet_app tests
+
+      - name: isort (import order)
+        run: isort --check-only fleet_app tests
+
+      - name: Flake8 (lint)
+        run: flake8 .
+
+      - name: MyPy (static types)
+        run: mypy fleet_app
+
+      # ---------- Unit tests + coverage ----------
+      - name: Run pytest
+        run: |
+          pytest -q --cov=fleet_app --cov-report=xml
+
+      - name: Upload coverage artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-xml
+          path: coverage.xml

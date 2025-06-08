@@ -1,0 +1,8 @@
+# Core runtime
+SQLAlchemy==2.0.30
+
+# desktop UI framework
+PyQt5==5.15.10          # swap to PySide6==6.7.1 if you prefer LGPL
+
+# PDF export for reports
+reportlab==4.1.0
