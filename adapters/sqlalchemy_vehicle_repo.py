@@ -1,4 +1,5 @@
 from sqlalchemy.orm import Session
+
 from database.models import Vehicle
 from repositories.vehicle_repository import AbstractVehicleRepository
 
@@ -13,12 +14,7 @@ class SQLAlchemyVehicleRepository(AbstractVehicleRepository):
         self.session.commit()
 
     def get_by_plate(self, plate: str):
-        return (
-            self.session
-            .query(Vehicle)
-            .filter_by(plate_number=plate)
-            .first()
-        )
+        return self.session.query(Vehicle).filter_by(plate_number=plate).first()
 
     def get_all(self):
         return self.session.query(Vehicle).all()

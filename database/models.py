@@ -1,5 +1,7 @@
-from sqlalchemy import Column, Integer, String, Boolean, Float
+from sqlalchemy import Boolean, Column, Float, Integer, String
+
 from database.schema import Base
+
 
 class Vehicle(Base):
     __tablename__ = "vehicle"
