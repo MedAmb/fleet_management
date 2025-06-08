@@ -81,9 +81,11 @@ jobs:
       - name: Build .exe installer
         shell: pwsh
         run: |
-          & "C:\Program Files (x86)\Inno Setup 6\ISCC.exe" `
-            /DMYVERSION="${{ env.VERSION }}" `
-            deploy\windows\installer.iss
+        # Affiche la version pour debug
+        echo "MyVersion = $env:VERSION"
+        & "C:\Program Files (x86)\Inno Setup 6\ISCC.exe" `
+          "/DMyVersion=$env:VERSION" `
+          deploy/windows/installer.iss
 
       # --- Upload final artifact ---------------------------------
       - name: Upload installer
