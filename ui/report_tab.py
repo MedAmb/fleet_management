@@ -3,18 +3,9 @@ from datetime import date
 from pathlib import Path
 
 from PyQt5.QtCore import QDate
-from PyQt5.QtWidgets import (
-    QComboBox,
-    QDateEdit,
-    QFileDialog,
-    QHBoxLayout,
-    QMessageBox,
-    QPushButton,
-    QTableWidget,
-    QTableWidgetItem,
-    QVBoxLayout,
-    QWidget,
-)
+from PyQt5.QtWidgets import (QComboBox, QDateEdit, QFileDialog, QHBoxLayout,
+                             QMessageBox, QPushButton, QTableWidget,
+                             QTableWidgetItem, QVBoxLayout, QWidget)
 
 from services.report_service import ReportService
 from services.vehicle_service import VehicleService
