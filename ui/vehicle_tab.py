@@ -1,7 +1,16 @@
 from PyQt5.QtCore import pyqtSignal
-from PyQt5.QtWidgets import (QCheckBox, QComboBox, QHBoxLayout, QLineEdit,
-                             QMessageBox, QPushButton, QTableWidget,
-                             QTableWidgetItem, QVBoxLayout, QWidget)
+from PyQt5.QtWidgets import (
+    QCheckBox,
+    QComboBox,
+    QHBoxLayout,
+    QLineEdit,
+    QMessageBox,
+    QPushButton,
+    QTableWidget,
+    QTableWidgetItem,
+    QVBoxLayout,
+    QWidget,
+)
 
 from services.vehicle_service import VehicleService
 

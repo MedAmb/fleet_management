@@ -1,7 +1,6 @@
 from datetime import date, time
 
-from sqlalchemy import (Boolean, Column, Date, Float, ForeignKey, Integer,
-                        String, Time)
+from sqlalchemy import Boolean, Column, Date, Float, ForeignKey, Integer, String, Time
 
 from database.schema import Base
 

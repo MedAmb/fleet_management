@@ -32,9 +32,6 @@ jobs:
       - name: Black (format check)
         run: black --check .
 
-      - name: isort (import order)
-        run: isort --check-only .
-
       # ---------- Tests & coverage ----------
       - name: Run pytest
         run: |
