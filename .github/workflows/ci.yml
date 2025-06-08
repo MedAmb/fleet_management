@@ -79,11 +79,11 @@ jobs:
         run: choco install innosetup --yes
 
       - name: Build .exe installer
-        env:
-          MyVersion: ${{ env.VERSION }}
+        shell: pwsh
         run: |
-          "C:\Program Files (x86)\Inno Setup 6\ISCC.exe" ^
-            build\windows\installer.iss
+          & "C:\Program Files (x86)\Inno Setup 6\ISCC.exe" `
+            /DMYVERSION="${{ env.VERSION }}" `
+            deploy\windows\installer.iss
 
       # --- Upload final artifact ---------------------------------
       - name: Upload installer
