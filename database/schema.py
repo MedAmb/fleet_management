@@ -1,6 +1,6 @@
 from pathlib import Path
-from appdirs import user_data_dir   # pip install appdirs
 
+from appdirs import user_data_dir  # pip install appdirs
 from sqlalchemy import create_engine
 from sqlalchemy.orm import declarative_base, sessionmaker
 
