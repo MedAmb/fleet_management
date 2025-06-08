@@ -14,7 +14,7 @@ DisableDirPage=no
 DisableProgramGroupPage=yes
 
 [Files]
-Source: ""..\..\dist\FleetManager.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\..\dist\FleetManager.exe"; DestDir: "{app}"; Flags: ignoreversion
 
 [Icons]
 Name: "{group}\Fleet Manager"; Filename: "{app}\FleetManager.exe"
