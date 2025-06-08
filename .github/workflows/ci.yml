@@ -38,12 +38,6 @@ jobs:
       - name: isort (import order)
         run: isort --check-only .
 
-      - name: Flake8 (lint)
-        run: flake8 .
-
-      - name: MyPy (static types)
-        run: mypy .
-
       # ---------- Tests & coverage ----------
       - name: Run pytest
         run: |

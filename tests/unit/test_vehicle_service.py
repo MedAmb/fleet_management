@@ -1,7 +1,8 @@
 import pytest
-from services.vehicle_service import VehicleService
-from repositories.vehicle_repository import AbstractVehicleRepository
+
 from database.models import Vehicle
+from repositories.vehicle_repository import AbstractVehicleRepository
+from services.vehicle_service import VehicleService
 
 
 class InMemoryRepo(AbstractVehicleRepository):
