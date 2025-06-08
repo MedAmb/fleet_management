@@ -47,12 +47,11 @@ jobs:
     needs: tests
     runs-on: windows-latest
 
+    env:
+      VERSION: ${{ github.run_number }}
+
     steps:
       - uses: actions/checkout@v4
-
-      - name: Derive version
-        id: ver
-        run: echo "VERSION=${{ github.run_number }}" >> $GITHUB_ENV
 
       - name: Set up Python
         uses: actions/setup-python@v5
